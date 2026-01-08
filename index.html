@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College ID Card</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+
+</head>
+<body>
+
+<!-- FORM -->
+<div class="form">
+<h3>Fill ID Info</h3>
+<input id="idno" placeholder="ID No">
+<input id="name" placeholder="Student Name">
+<input id="father" placeholder="Father's Name">
+<input id="class" placeholder="Class">
+<input id="roll" placeholder="Roll">
+<input id="session" placeholder="Session">
+<input id="address" placeholder="Address">
+<input type="file" id="photo">
+<button onclick="setData()">Generate</button>
+<button class="download" onclick="downloadPNG()">Download PNG</button>
+</div>
+
+<!-- CARD -->
+<div class="id-card" id="card">
+
+<div class="header"></div>
+<div class="top-content">
+    <p>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+    <h2>Narsingdi Law College</h2>
+    <h3>Velanagar Narsingdi</h3>
+    <div class="std">
+        <p>Student</p>
+        <p>ID Card</p>
+
+    </div>
+    
+</div>
+<div class="wave-green"></div>
+<div class="wave-orange"></div>
+<div class="photo-box">
+<div class="photo-boxinner">
+<img id="cardPhoto" src="https://via.placeholder.com/150">
+</div>
+</div>
+<div class="fotter">
+    <div class="ftop">
+
+    </div>
+<div class="info">
+<p class="id"><b>ID NO :</b><span id="cardIdno">---</span></p>
+<h1 id="cardName">Student Name</h1>
+<div class="description">
+
+
+<p><b>Father :</b> <span id="cardFather">---</span></p>
+<p><b>Class :</b> <span id="cardClass">---</span></p>
+<p ><b>Roll :</b> <span id="cardRoll">---</span></p>
+<p class="session"><b>Session :</b> <span id="cardSession">---</span></p>
+<p><b>Address :</b> <span id="cardAddress">---</span></p>
+</div>
+</div>
+</div>
+
+
+<script>
+function setData(){
+
+    let idInput = document.getElementById("idno");
+    let nameInput = document.getElementById("name");
+    let fatherInput = document.getElementById("father");
+    let classInput = document.getElementById("class");
+    let rollInput = document.getElementById("roll");
+    let sessionInput = document.getElementById("session");
+    let addressInput = document.getElementById("address");
+
+    document.getElementById("cardIdno").innerText = idInput.value;
+    document.getElementById("cardName").innerText = nameInput.value;
+    document.getElementById("cardFather").innerText = fatherInput.value;
+    document.getElementById("cardClass").innerText = classInput.value;
+    document.getElementById("cardRoll").innerText = rollInput.value;
+    document.getElementById("cardSession").innerText = sessionInput.value;
+    document.getElementById("cardAddress").innerText = addressInput.value;
+
+    if(document.getElementById("photo").files[0]){
+        let r = new FileReader();
+        r.onload = ()=> document.getElementById("cardPhoto").src = r.result;
+        r.readAsDataURL(document.getElementById("photo").files[0]);
+    }
+}
+
+function downloadPNG(){
+    html2canvas(document.getElementById("card")).then(canvas=>{
+        let a = document.createElement("a");
+        a.download = "college-id.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+    });
+}
+</script>
+
+
+</body>
+</html>
