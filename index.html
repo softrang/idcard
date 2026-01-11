@@ -13,6 +13,8 @@
 <!-- FORM -->
 <div class="form">
 <h3>Fill ID Info</h3>
+<input id="cname" placeholder="College Name">
+<input id="caddress" placeholder="College Address">
 <input id="idno" placeholder="ID No">
 <input id="name" placeholder="Student Name">
 <input id="father" placeholder="Father's Name">
@@ -30,9 +32,9 @@
 
 <div class="header"></div>
 <div class="top-content">
-    <p>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
-    <h2>Narsingdi Law College</h2>
-    <h3>Velanagar Narsingdi</h3>
+    
+    <h2 id="college-name">College Name</h2>
+    <h3 id="college-address">college Address</h3>
     <div class="std">
         <p>Student</p>
         <p>ID Card</p>
@@ -70,7 +72,9 @@
 <script>
 function setData(){
 
-    let idInput = document.getElementById("idno");
+    let cnameInput = document.getElementById("cname");
+    let caddressInput = document.getElementById("caddress");
+    let idnoInput = document.getElementById("idno");
     let nameInput = document.getElementById("name");
     let fatherInput = document.getElementById("father");
     let classInput = document.getElementById("class");
@@ -78,7 +82,9 @@ function setData(){
     let sessionInput = document.getElementById("session");
     let addressInput = document.getElementById("address");
 
-    document.getElementById("cardIdno").innerText = idInput.value;
+    document.getElementById("college-name").innerText = cnameInput.value;
+    document.getElementById("college-address").innerText = caddressInput.value;
+    document.getElementById("cardIdno").innerText = idnoInput.value;
     document.getElementById("cardName").innerText = nameInput.value;
     document.getElementById("cardFather").innerText = fatherInput.value;
     document.getElementById("cardClass").innerText = classInput.value;
